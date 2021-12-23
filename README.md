@@ -8,6 +8,7 @@ Output: Output results using alert window. Output must result in who won the rps
 PseudoCode:
 
 Execute Program
+Create array to store list of valid moves.
 Create two input variables. One for the computer and one for the user/player.
 Generate move for computer via Math.random function.
   -Based on the result of the random function, select a rps move.
