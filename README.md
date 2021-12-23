@@ -1,0 +1,18 @@
+PROJECT ROCK PAPER SCISSORS BY THE ODIN PROJECT
+
+Plan:
+Interface: Console
+Input: Generate random value for computer move and prompt user for input.
+Output: Output results using alert window. Output must result in who won the rps round.
+
+PseudoCode:
+
+Execute Program
+Create two input variables. One for the computer and one for the user/player.
+Generate move for computer via Math.random function.
+  -Based on the result of the random function, select a rps move.
+Get input from user via prompt.
+  -must be case insensitive
+  -only accepts strings
+Create a function to determine who won.
+Output result via alert function.
