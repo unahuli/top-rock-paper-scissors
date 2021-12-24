@@ -42,9 +42,33 @@ function playRound(playerSelection, computerSelection) {
       return RESULTS.LOSE;
     }
 
+  //condition where the result is a draw 
   else {
     return RESULTS.DRAW;
   }
 }
 
-console.log(playRound("Rock", computerPlay()));
+//function to get player move
+function getPlayerMove() { 
+  const playerMove = prompt("Rock, Paper or Scissors?");
+
+  //function to validate player move
+  function validatePlayerMove() {
+    if(typeof(playerMove) === 'string') {
+      const found = MOVES.find(move => move.toLowerCase() === playerMove.toLowerCase());
+      return found ?? console.log("Not a valid choice");
+    } else {
+      console.log("Not a valid choice");
+    }
+  }
+  
+  return validatePlayerMove();
+}          
+      // const found = MOVES.find(move => move.toLowerCase() === playerMove.toLowerCase());
+      // if (found) {
+      //   console.log("Not a valid move.")
+      // }
+ 
+  // console.log(validatePlayerMove());
+
+// console.log(playRound("Rock", computerPlay()));

@@ -15,5 +15,6 @@ Generate move for computer via Math.random function.
 Get input from user via prompt.
   -must be case insensitive
   -only accepts strings
+  -accepts null
 Create a function to determine who won.
 Output result via alert function.
