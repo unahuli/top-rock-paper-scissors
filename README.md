@@ -21,3 +21,7 @@ Output result via alert function.
   -must declare start of round
   -show player and computer move
   -show tally
+
+  *NOTE pseudocode served as something to follow.. though the final program ended something entirely different along the way but it's still good
+
+  

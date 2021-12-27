@@ -192,6 +192,7 @@ function game() {
 Computer move: ${computerMove}`);
 
     //call the function to display the current score in each round
+    
     displayScore();               
   }
 
