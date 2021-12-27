@@ -18,3 +18,6 @@ Get input from user via prompt.
   -accepts null
 Create a function to determine who won.
 Output result via alert function.
+  -must declare start of round
+  -show player and computer move
+  -show tally
