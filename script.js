@@ -11,13 +11,13 @@ const MESSAGES = {
   USER_MOVE_PROMPT: "Rock, Paper or Scissors?",
   CANCELLED: "Game cancelled.",
   INVALID: "Not a valid input."
-}
+};
 
 //declare an object array to keep player and computer score
 let playersScore = {
   player: 0,
   computer: 0
-}
+};
 
 //function to generate random move for computer 
 function computerPlay() {
@@ -41,7 +41,7 @@ function playRound(playerSelection, computerSelection) {
       WIN: `You won! ${playerSelection} beats ${computerSelection}.`,
       LOSE: `You lose! ${computerSelection} beats ${playerSelection}.`,
       DRAW: `It's a draw! Both used the same move.`
-  }
+  };
 
   //helper function to display round results
   let displayResults = (results) => {
@@ -51,7 +51,7 @@ function playRound(playerSelection, computerSelection) {
   //helper function to keep tabs on the score  
   let keepScore = (winner) => {
     playersScore[winner]++;
-  }
+  };
 
   //Conditions where the player wins
   if (playerSelection === MOVES[0] && computerSelection === MOVES[2]
