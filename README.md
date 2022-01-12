@@ -26,4 +26,14 @@ Output: Output results using alert window. Output must result in who won the rps
 
   ### *NOTE pseudocode served as something to follow.. though the final program ended something entirely different along the way but it's still good
 
+
+***
+
+## RPS with UI
+
+<p>
+Interface: Web UI
+  - Add three buttons for each player move
+  - Add div for displaying results
+</p>
   
