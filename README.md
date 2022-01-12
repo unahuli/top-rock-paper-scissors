@@ -36,4 +36,12 @@ Interface: Web UI
   - Add three buttons for each player move
   - Add div for displaying results
 </p>
+
+Need to remove:
+- function that validates player move
+- array that lists valid moves
+
+Questions:
+When does the game start?
+When does the game end?
   

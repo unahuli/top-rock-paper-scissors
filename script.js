@@ -1,9 +1,9 @@
 //declare an array which lists valid moves in the game
-const MOVES = [
-      "Rock",
-      "Paper",
-      "Scissors"
-];
+// const MOVES = [
+//       "Rock",
+//       "Paper",
+//       "Scissors"
+// ];
 
 //declare an array which lists all in-game messages
 const MESSAGES = {
@@ -78,39 +78,41 @@ function playRound(playerSelection, computerSelection) {
 }
 
 //function to get player move
-function getPlayerMove() { 
-  const playerMove = prompt(MESSAGES.USER_MOVE_PROMPT);
+function getPlayerMove(e) { 
+  //const playerMove = prompt(MESSAGES.USER_MOVE_PROMPT);
 
   //function to validate player move
-  function validatePlayerMove(playerMove) {
+  //function validatePlayerMove(playerMove) {
 
      //if player input is an empty string
-    if (playerMove === '' || playerMove === null) {
-      console.log(MESSAGES.CANCELLED);
-      return;
-    }
+    // if (playerMove === '' || playerMove === null) {
+    //   console.log(MESSAGES.CANCELLED);
+    //   return;
+    // }
     //if player input is not null and a string
-    else {
+    //else {
 
       //change both player input and values in the MOVES array to lowercase to bypass case sensitivity
       // then check if player input matches any value in the array using the array method find
       // pass the value to variable found. value passed is either the matched value in the array or undefined
-      const found = MOVES.find(move => move.toLowerCase() === playerMove.toLowerCase());
+      // const found = MOVES.find(move => move.toLowerCase() === playerMove.toLowerCase());
 
       //if the value is defined(any value from the MOVES array), return it 
       //otherwise, return a console log
-      if (found) {
-        return found;
-      } else  {
-        console.log(MESSAGES.INVALID);
-        return; 
-      }
+  //     if (found) {
+  //       return found;
+  //     } else  {
+  //       console.log(MESSAGES.INVALID);
+  //       return; 
+  //     }
 
-    } 
-  }
+  //   } 
+  // }
 
   //returns player input after validation
-  return validatePlayerMove(playerMove);
+
+  //return validatePlayerMove(playerMove);
+  return e.target.value;
 }
 
 // function to run the whole game
@@ -217,3 +219,9 @@ Computer move: ${computerMove}`);
 // let keepScore = (winner) => {
 //   playersScore[winner]++;
 // }
+
+const playerButtons = document.querySelectorAll('.move');
+playerButtons.forEach((playerButton) => {
+  playerButton.addEventListener('click', getPlayerMove);
+});
+console.log(playerButtons);
