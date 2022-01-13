@@ -1,9 +1,10 @@
 //declare an array which lists valid moves in the game
-// const MOVES = [
-//       "Rock",
-//       "Paper",
-//       "Scissors"
-// ];
+const MOVES = [
+  "Rock",
+  "Paper",
+  "Scissors"
+];
+
 
 //declare an array which lists all in-game messages
 const MESSAGES = {
@@ -34,18 +35,21 @@ function computerPlay() {
 
 
 //function to play matchup
-function playRound(playerSelection, computerSelection) {
+function playRound(evt) {
+  //valid moves
+const playerMove = evt.target.value;
+const computerMove = computerPlay();
 
   //array object to list results
   const RESULTS = {
-      WIN: `You won! ${playerSelection} beats ${computerSelection}.`,
-      LOSE: `You lose! ${computerSelection} beats ${playerSelection}.`,
+      WIN: `You won! ${playerMove} beats ${computerMove}.`,
+      LOSE: `You lose! ${computerMove} beats ${playerMove}.`,
       DRAW: `It's a draw! Both used the same move.`
   };
 
   //helper function to display round results
   let displayResults = (results) => {
-    console.log(results);
+    resultsContainer.textContent = results;
   };
 
   //helper function to keep tabs on the score  
@@ -54,17 +58,17 @@ function playRound(playerSelection, computerSelection) {
   };
 
   //Conditions where the player wins
-  if (playerSelection === MOVES[0] && computerSelection === MOVES[2]
-    || playerSelection === MOVES[1] && computerSelection === MOVES[0]
-    || playerSelection === MOVES[2] && computerSelection === MOVES[1]) {
+  if (playerMove === MOVES[0] && computerMove === MOVES[2]
+    || playerMove === MOVES[1] && computerMove === MOVES[0]
+    || playerMove === MOVES[2] && computerMove === MOVES[1]) {
       displayResults(RESULTS.WIN);
       keepScore("player");
     }
 
   //Conditions where the player loses
-  else if (playerSelection === MOVES[0] && computerSelection === MOVES[1]
-    || playerSelection === MOVES[1] && computerSelection === MOVES[2]
-    || playerSelection === MOVES[2] && computerSelection === MOVES[0]) {
+  else if (playerMove === MOVES[0] && computerMove === MOVES[1]
+    || playerMove === MOVES[1] && computerMove === MOVES[2]
+    || playerMove === MOVES[2] && computerMove === MOVES[0]) {
       displayResults(RESULTS.LOSE);
       keepScore("computer");
     }
@@ -222,6 +226,8 @@ Computer move: ${computerMove}`);
 
 const playerButtons = document.querySelectorAll('.move');
 playerButtons.forEach((playerButton) => {
-  playerButton.addEventListener('click', getPlayerMove);
+  playerButton.addEventListener('click', playRound);
 });
-console.log(playerButtons);
+// console.log(playerButtons);
+
+const resultsContainer = document.querySelector('#results');
