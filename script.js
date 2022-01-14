@@ -38,9 +38,6 @@ function computerPlay() {
 
 //function to play matchup
 function playRound(playerMove, computerMove) {
-  //valid moves
-// const playerMove = evt.target.value;
-// const computerMove = computerPlay();
 
   //array object to list results
   const RESULTS = {
@@ -85,85 +82,9 @@ function playRound(playerMove, computerMove) {
   
 }
 
-//function to get player move
-function getPlayerMove(e) { 
-  //const playerMove = prompt(MESSAGES.USER_MOVE_PROMPT);
-
-  //function to validate player move
-  //function validatePlayerMove(playerMove) {
-
-     //if player input is an empty string
-    // if (playerMove === '' || playerMove === null) {
-    //   console.log(MESSAGES.CANCELLED);
-    //   return;
-    // }
-    //if player input is not null and a string
-    //else {
-
-      //change both player input and values in the MOVES array to lowercase to bypass case sensitivity
-      // then check if player input matches any value in the array using the array method find
-      // pass the value to variable found. value passed is either the matched value in the array or undefined
-      // const found = MOVES.find(move => move.toLowerCase() === playerMove.toLowerCase());
-
-      //if the value is defined(any value from the MOVES array), return it 
-      //otherwise, return a console log
-  //     if (found) {
-  //       return found;
-  //     } else  {
-  //       console.log(MESSAGES.INVALID);
-  //       return; 
-  //     }
-
-  //   } 
-  // }
-
-  //returns player input after validation
-
-  //return validatePlayerMove(playerMove);
-  return e.target.value;
-}
-
 // function to run the whole game
 function game(evt) {
-  
-  //declare and initialize a variable to control when the game will end
-  //let gameOngoing = true;
-
-  /*
-  //create a function to prompt user for the number of rounds
-  const getNumberofRounds = () => {
-
-    //prompt user for a number for the number of rounds and pass it to a variable
-    const numberOfRounds = prompt (MESSAGES.ROUND_PROMPT, 5)
-
-    //regex expression that accepts numbers from 1 - 10 only
-    const ROUNDS_PATTERN = /^(10|[1-9])$/;
-
-    //if user cancels or inputs nothing then set the gameOngoing to false 
-    //and let the user know the game is cancelled
-    if (numberOfRounds === "" || numberOfRounds === null) {
-      console.log(MESSAGES.CANCELLED);
-      gameOngoing = false;
-
-    //if user inputs something, check if it matches the regular expression(1-10 numbers only) 
-    //then return the input/number of rounds 
-    } else if (ROUNDS_PATTERN.test(numberOfRounds)) {
-      return numberOfRounds;
-
-    //if user inputs anything but a number then set the gameOngoing to false 
-    //and also let the user know that the input was invalid 
-    } else {
-      console.log(MESSAGES.INVALID);
-      gameOngoing = false;
-    }
-  };
-  */
-
-  //exits the game if the flag is set to false
-  // if (!gameOngoing) {
-  //   return;
-  // }
-
+ 
   //displays the score via a table format
   let displayScore = () => {
     score.innerHTML = `Player Score: ${playersScore.player} <br>
@@ -177,28 +98,6 @@ function game(evt) {
     playersScore.player = 0;
     playersScore.computer = 0;
   }
-
-  //calls the function to prompt user to give a number of rounds then pass it to a variable
-  //const numberOfRounds = getNumberofRounds();
-
-  //loop over the number of rounds starting from 0th index to the number before the number of rounds
-  //can also use i = 1; i <= numberOfRounds
-  //for (let i = 0; i < numberOfRounds; i++) {
-
-  // const WINNER_SCORE = 5;
-  // let winner = '';
-  // if (playersScore.player === WINNER_SCORE) {
-  //   winner = 'Player';
-  // } else if (playersScore.computer === WINNER_SCORE) {
-  //   winner = 'Computer';
-  // }
-  // if (winner) {
-  //   roundNum = 0;
-  //   roundOutcome.textContent = `${winner} won!`;
-  //   //resultsContainer.appendChild(roundOutcome);
-  //   resetScore();
-  //   return;
-  // }
 
     //call the get player move input function then pass it to a local variable
     const playerMove = evt.target.value;
@@ -244,34 +143,10 @@ function game(evt) {
     }
   }
 
-  
-  //call the function to reset the score after the game ends
-  //resetScore();
-//}
-
-// const newLocal = () => {
-//   const numberOfRounds = prompt("Please enter the number of rounds from 1-10 only. The default is 5 rounds.", 5);
-//   const ROUNDS_PATTERN = /^(10|[1-9])$/;
-//   if (numberOfRounds === "" || numberOfRounds === null) {
-//     console.log("Game cancelled.");
-//     return;
-//   } else if (ROUNDS_PATTERN.test(numberOfRounds)) {
-//     return numberOfRounds;
-//   } else {
-//     console.log("Invalid num");
-//   }
-// };
-// console.log(playRound("Rock", computerPlay()));
-
-// let keepScore = (winner) => {
-//   playersScore[winner]++;
-// }
-
 const playerButtons = document.querySelectorAll('.move');
 playerButtons.forEach((playerButton) => {
   playerButton.addEventListener('click', game);
 });
-// console.log(playerButtons);
 
 const resultsContainer = document.querySelector('#results');
 
