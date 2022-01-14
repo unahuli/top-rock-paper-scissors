@@ -5,6 +5,8 @@ const MOVES = [
   "Scissors"
 ];
 
+//declare round number
+let roundNum = 0;
 
 //declare an array which lists all in-game messages
 const MESSAGES = {
@@ -35,10 +37,10 @@ function computerPlay() {
 
 
 //function to play matchup
-function playRound(evt) {
+function playRound(playerMove, computerMove) {
   //valid moves
-const playerMove = evt.target.value;
-const computerMove = computerPlay();
+// const playerMove = evt.target.value;
+// const computerMove = computerPlay();
 
   //array object to list results
   const RESULTS = {
@@ -49,7 +51,9 @@ const computerMove = computerPlay();
 
   //helper function to display round results
   let displayResults = (results) => {
-    resultsContainer.textContent = results;
+
+    roundOutcome.innerHTML = results;
+    resultsContainer.appendChild(roundOutcome);
   };
 
   //helper function to keep tabs on the score  
@@ -120,11 +124,12 @@ function getPlayerMove(e) {
 }
 
 // function to run the whole game
-function game() {
+function game(evt) {
   
   //declare and initialize a variable to control when the game will end
-  let gameOngoing = true;
+  //let gameOngoing = true;
 
+  /*
   //create a function to prompt user for the number of rounds
   const getNumberofRounds = () => {
 
@@ -152,15 +157,19 @@ function game() {
       gameOngoing = false;
     }
   };
+  */
 
   //exits the game if the flag is set to false
-  if (!gameOngoing) {
-    return;
-  }
+  // if (!gameOngoing) {
+  //   return;
+  // }
 
   //displays the score via a table format
   let displayScore = () => {
-    console.table(playersScore);
+    score.innerHTML = `Player Score: ${playersScore.player} <br>
+    Computer Score: ${playersScore.computer}`;
+    //console.log(playersScore);
+    resultsContainer.appendChild(score);
   }
 
   //resets the score back to 0
@@ -170,41 +179,75 @@ function game() {
   }
 
   //calls the function to prompt user to give a number of rounds then pass it to a variable
-  const numberOfRounds = getNumberofRounds();
+  //const numberOfRounds = getNumberofRounds();
 
   //loop over the number of rounds starting from 0th index to the number before the number of rounds
   //can also use i = 1; i <= numberOfRounds
-  for (let i = 0; i < numberOfRounds; i++) {
+  //for (let i = 0; i < numberOfRounds; i++) {
+
+  // const WINNER_SCORE = 5;
+  // let winner = '';
+  // if (playersScore.player === WINNER_SCORE) {
+  //   winner = 'Player';
+  // } else if (playersScore.computer === WINNER_SCORE) {
+  //   winner = 'Computer';
+  // }
+  // if (winner) {
+  //   roundNum = 0;
+  //   roundOutcome.textContent = `${winner} won!`;
+  //   //resultsContainer.appendChild(roundOutcome);
+  //   resetScore();
+  //   return;
+  // }
 
     //call the get player move input function then pass it to a local variable
-    const playerMove = getPlayerMove();
+    const playerMove = evt.target.value;
 
     //if player input was actually undefined/cancelled/null, exit the game
-    if (!playerMove) {
-      return;
-    }
+    // if (!playerMove) {
+    //   return;
+    // }
 
     //call the function which decides the computer move
     const computerMove = computerPlay();
 
+    //display roundNum
+    displayRound.textContent = `Round: ${roundNum+=1}`;
+    resultsContainer.appendChild(displayRound);
     //call the function which matches up the player move agains the computer move
     playRound(playerMove,computerMove);
 
     //log the current round, i + 1 because our index starts from 0
-    console.log(`Round ${i + 1}`);
+    //console.log(`Round ${i + 1}`);
 
     //log the player move and the computer move
-    console.log(`Player move: ${playerMove}
-Computer move: ${computerMove}`);
+    displayMove.textContent = `Player move: ${playerMove} Computer move: ${computerMove}`;
+    resultsContainer.appendChild(displayMove);
 
     //call the function to display the current score in each round
     
-    displayScore();               
+    displayScore();      
+
+    const WINNER_SCORE = 5;
+    let winner = '';
+    if (playersScore.player === WINNER_SCORE) {
+      winner = 'Player';
+    } else if (playersScore.computer === WINNER_SCORE) {
+      winner = 'Computer';
+    }
+    if (winner) {
+      roundNum = 0;
+      roundOutcome.textContent = `${winner} won!`;
+      //resultsContainer.appendChild(roundOutcome);
+      resetScore();
+      return;
+    }
   }
 
+  
   //call the function to reset the score after the game ends
-  resetScore();
-}
+  //resetScore();
+//}
 
 // const newLocal = () => {
 //   const numberOfRounds = prompt("Please enter the number of rounds from 1-10 only. The default is 5 rounds.", 5);
@@ -226,8 +269,13 @@ Computer move: ${computerMove}`);
 
 const playerButtons = document.querySelectorAll('.move');
 playerButtons.forEach((playerButton) => {
-  playerButton.addEventListener('click', playRound);
+  playerButton.addEventListener('click', game);
 });
 // console.log(playerButtons);
 
 const resultsContainer = document.querySelector('#results');
+
+const displayRound = document.createElement('p');
+const score = document.createElement('p');
+const roundOutcome = document.createElement('p');
+const displayMove = document.createElement('p');

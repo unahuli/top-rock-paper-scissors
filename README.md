@@ -43,5 +43,7 @@ Need to remove:
 
 Questions:
 When does the game start?
+-starts when the player chooses a move (i.e. when a player presses a move button)
 When does the game end?
+-once the player or computer reaches 5 points
   
