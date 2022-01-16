@@ -3,16 +3,38 @@
   <head>
     <title>Rock-Paper-Scissors</title>
     <meta charset='UTF-8'>
+    <link href='style.css' rel='stylesheet'>
     <script src="script.js" defer></script>
   </head>
   <body>
     <main>
-      <div class="button-container">
-        <button type="button" class="move" value="Rock">Rock</button>
-        <button type="button" class="move" value="Paper">Paper</button>
-        <button type="button" class="move" value="Scissors">Scissors</button>
-      </div>
-      <div id="results"></div>
+      <h1>Rock Paper Scissors!</h1>
+      <section class="game-screen">
+        <div class="button-container">
+          <button type="button" class="move" value="Rock">Rock</button>
+          <button type="button" class="move" value="Paper">Paper</button>
+          <button type="button" class="move" value="Scissors">Scissors</button>
+        </div>
+        <div id="results">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Player</th>
+                <th>Computer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="score-header">
+                <th>Score</th>
+              </tr>
+              <tr id="move-header">
+                <th>Move</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
   </body>
 </html>

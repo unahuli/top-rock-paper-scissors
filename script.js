@@ -49,8 +49,8 @@ function playRound(playerMove, computerMove) {
   //helper function to display round results
   let displayResults = (results) => {
 
-    roundOutcome.innerHTML = results;
-    resultsContainer.appendChild(roundOutcome);
+    roundOutcome.textContent = results;
+    displayRound.after(roundOutcome);
   };
 
   //helper function to keep tabs on the score  
@@ -87,10 +87,14 @@ function game(evt) {
  
   //displays the score via a table format
   let displayScore = () => {
-    score.innerHTML = `Player Score: ${playersScore.player} <br>
-    Computer Score: ${playersScore.computer}`;
+    // score.innerHTML = `Player Score: ${playersScore.player} <br>
+    // Computer Score: ${playersScore.computer}`;
+    playerScoreDisplay.textContent = `${playersScore.player}`;
+    computerScoreDisplay.textContent = `${playersScore.computer}`;
     //console.log(playersScore);
-    resultsContainer.appendChild(score);
+    //resultsContainer.appendChild(score);
+    scoreHeader.append(playerScoreDisplay);
+    scoreHeader.append(computerScoreDisplay);
   }
 
   //resets the score back to 0
@@ -112,7 +116,7 @@ function game(evt) {
 
     //display roundNum
     displayRound.textContent = `Round: ${roundNum+=1}`;
-    resultsContainer.appendChild(displayRound);
+    resultsContainer.insertBefore(displayRound, matchTableData);
     //call the function which matches up the player move agains the computer move
     playRound(playerMove,computerMove);
 
@@ -120,8 +124,12 @@ function game(evt) {
     //console.log(`Round ${i + 1}`);
 
     //log the player move and the computer move
-    displayMove.textContent = `Player move: ${playerMove} Computer move: ${computerMove}`;
-    resultsContainer.appendChild(displayMove);
+    // displayMove.textContent = `Player move: ${playerMove} Computer move: ${computerMove}`;
+    playerMoveDisplay.textContent = `${playerMove}`;
+    computerMoveDisplay.textContent = `${computerMove}`;
+    moveHeader.appendChild(playerMoveDisplay);
+    moveHeader.appendChild(computerMoveDisplay);
+    //resultsContainer.appendChild(displayMove);
 
     //call the function to display the current score in each round
     
@@ -130,7 +138,7 @@ function game(evt) {
     const WINNER_SCORE = 5;
     let winner = '';
     if (playersScore.player === WINNER_SCORE) {
-      winner = 'Player';
+      winner = 'You';
     } else if (playersScore.computer === WINNER_SCORE) {
       winner = 'Computer';
     }
@@ -151,6 +159,19 @@ playerButtons.forEach((playerButton) => {
 const resultsContainer = document.querySelector('#results');
 
 const displayRound = document.createElement('p');
-const score = document.createElement('p');
+//const score = document.createElement('p');
 const roundOutcome = document.createElement('p');
 const displayMove = document.createElement('p');
+
+
+const matchTableData = document.querySelector('table');
+
+
+const scoreHeader = document.querySelector('#score-header');
+const playerScoreDisplay = document.createElement('td');
+const computerScoreDisplay = document.createElement('td'); 
+
+
+const moveHeader = document.querySelector('#move-header');
+const playerMoveDisplay = document.createElement('td');
+const computerMoveDisplay = document.createElement('td');
