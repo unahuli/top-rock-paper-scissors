@@ -15,3 +15,7 @@ Pseudocode:
     - IF number is 0, return computerChoice as "rock"
     - ELSE IF number is 1, return computerChoice as "paper"
     - ELSE if number is 2, return computerChoice as "scissors"
+
+3. CREATE a new function named getHumanChoice.
+    - PROMPT user for a valid choice
+    - RETURN choice as lowercase
