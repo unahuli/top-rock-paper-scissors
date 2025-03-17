@@ -9,4 +9,11 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice())
+console.log(getComputerChoice());
+
+function getHumanChoice() {
+    choice = prompt("Enter your move:");
+    return choice.toLowerCase();
+}
+
+console.log(getHumanChoice());
