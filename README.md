@@ -35,3 +35,8 @@ Pseudocode:
         - INCREMENT computerScore variable
     - ELSE player choice and computer choice are the same
         - DISPLAY "It's a draw!"
+
+7. CREATE a new function called playGame.
+    - MOVE the playRound function and global score variables inside the playGame function
+    - REPEAT the playRound function five times
+    - DISPLAY the winner using console.log
