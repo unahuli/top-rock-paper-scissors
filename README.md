@@ -1,12 +1,12 @@
 # The Odin Project: Rock, Paper, Scissors
 
-Input(User): Use prompt to get user input from console
-    -must be case-insensitive
-    -no need to check if input is a valid choice
-Input(Computer): Randomized choice
-Output: User choice versus randomized computer choice
-        Check winner
-        Display the scores using console log
+Input(User): Use prompt to get user input from console  
+    - must be case-insensitive  
+    - no need to check if input is a valid choice  
+Input(Computer): Randomized choice  
+Output: User choice versus randomized computer choice  
+    - Check winner  
+    - Display the scores using console log
 
 Pseudocode:
 
