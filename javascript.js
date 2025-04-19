@@ -11,21 +11,11 @@ function getComputerChoice() {
     }
 }
 
-// console.log(getComputerChoice());
-
 function getHumanChoice() {
     choice = prompt("Enter your move:");
     return choice.toLowerCase();
 }
 
-// console.log(getHumanChoice());
-
-
-
-// humanChoice = getHumanChoice();
-// computerChoice = getComputerChoice();
-// console.log(computerChoice);
-// console.log(playRound(humanChoice, computerChoice));
 
 function playGame(numberOfRounds) {
     humanScore = 0;
