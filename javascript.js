@@ -1,3 +1,16 @@
+let humanScore = 0;
+let computerScore = 0;
+let round = 1;
+//Query Selectors
+buttons = document.querySelectorAll(".btn-container button");
+buttons.forEach((button => {
+    button.addEventListener("click", (e) => {
+        console.log(e.target.textContent);
+        let playerChoice = e.target.textContent.toLowerCase();
+        playRound(playerChoice,getComputerChoice());
+    });
+    })
+);
 
 
 function getComputerChoice() {
@@ -16,27 +29,54 @@ function getHumanChoice() {
     return choice.toLowerCase();
 }
 
+function playRound(humanChoice, computerChoice) {
+    roundDisplay = document.querySelector("#round-display");
+    scoreDisplay = document.querySelector("#score-display");
+    roundOutcome = document.querySelector("#round-outcome");
+    roundDisplay.textContent = `Round: ${round}`;
+    scoreDisplay.textContent = `Player score: ${humanScore}
+                                Computer score: ${computerScore}`
+    if ((humanChoice === "rock" && computerChoice === "scissors") 
+        || (humanChoice === "paper" && computerChoice === "rock")
+        || (humanChoice === "scissors" && computerChoice === "paper")) {
+            humanScore++;
+            roundOutcome.textContent = `You win! ${humanChoice} beats ${computerChoice}!`;
+    } else if ((computerChoice === "rock" && humanChoice === "scissors") 
+        || (computerChoice === "paper" && humanChoice === "rock")
+        || (computerChoice === "scissors" && humanChoice === "paper")) {
+            computerScore++;
+            roundOutcome.textContent = `You lose! ${computerChoice} beats ${humanChoice}!`;
+    } else {
+        roundOutcome.textContent = "It's a draw!";
+    }
+    scoreDisplay.textContent = `Player score: ${humanScore}
+                                Computer score: ${computerScore}`;
+    nextRound();
+    if (humanScore === 5 || computerScore === 5) {
+        roundOutcome.textContent = declareWinner();
+        disableButtons();
+    }
+}
+
+function nextRound() {
+    round++;
+}
+
+function declareWinner() {
+    if (humanScore === 5 && (computerScore < humanScore)) {
+        return "You win!";
+    } else  if (computerScore === 5 && (humanScore < computerScore)) {
+        return "You lose!";
+    }
+}
+
+function disableButtons() {
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+}
 
 function playGame(numberOfRounds) {
-    humanScore = 0;
-    computerScore = 0;
-
-    function playRound(humanChoice, computerChoice) {
-        if ((humanChoice === "rock" && computerChoice === "scissors") 
-            || (humanChoice === "paper" && computerChoice === "rock")
-            || (humanChoice === "scissors" && computerChoice === "paper")) {
-                humanScore++;
-                console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
-        } else if ((computerChoice === "rock" && humanChoice === "scissors") 
-            || (computerChoice === "paper" && humanChoice === "rock")
-            || (computerChoice === "scissors" && humanChoice === "paper")) {
-                computerScore++;
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
-        } else {
-            console.log("It's a draw!")
-        }
-    
-    }
 
     for(i=1;i<=numberOfRounds;i++) {
         playRound(getHumanChoice(),getComputerChoice())
@@ -51,4 +91,4 @@ function playGame(numberOfRounds) {
     }
 }
 
-playGame(5)
+//playGame(5)

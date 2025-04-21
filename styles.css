@@ -9,3 +9,10 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.results-container p {
+    margin: 3% auto;
+    width: 500px;
+    text-align: center;
+    
+}
